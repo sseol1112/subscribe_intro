@@ -2,12 +2,10 @@
 /* 
 font-family: 'Montserrat', sans-serif;
 font-family: 'Noto Sans KR', sans-serif;
-font-family: 'Poppins', sans-serif; 
 */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@200;300;400;500;600&display=swap');
 body{
-    font-family: 'Poppins','Noto Sans KR', sans-serif;
-    min-width: 360px;
+    font-family: 'Noto Sans KR', sans-serif;
     letter-spacing: -0.025em;
 }
 
