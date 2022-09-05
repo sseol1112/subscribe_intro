@@ -76,39 +76,34 @@
                       wS = $(this).scrollTop();
 
 
-                if (wS > (sec1T+sec1H-wH)){
+                if (wS > (sec1T+sec1H-wH) && wS < (sec2T+sec2H-wH)){
                     self.sec1Text.classList.add('on');
 
                     for(let i=0; i<self.sec1Img.length; i++) {
                         self.sec1Img[i].classList.add('on');
                     }
-                    //console.log('섹션1 실행')
-                } 
-
-                if (wS > (sec2T+sec2H-wH)){
+                    console.log('섹션1 실행')
+                } else if(wS > (sec2T+sec2H-wH) && wS < (sec3T+sec3H-wH)) {
                     self.sec2Img.classList.add('on');
                     if(self.sec2Img.classList.contains('on')){
                         self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png')
                     }
-                    //console.log('섹션2 실행')
-                } 
-                
-                
-                if (wS > (sec3T+sec3H-wH)) {
+                    console.log('섹션2 실행')
+                } else if(wS > (sec3T+sec3H-wH) && wS < (sec4T+sec4H-wH)) {
                     for(let i=0; i<self.sec3Img.length; i++) {
                         self.sec3Img[i].classList.add('on');
                     }
-                    //console.log('섹션3 실행')
-                }
-                if (wS > (sec4T+sec4H-wH)) {
+                    console.log('섹션3 실행')
+                } else if(wS > (sec4T+sec4H-wH) && wS < 1900) {
                     for(let i=0; i<self.sec4Img.length; i++) {
                         self.sec4Img[i].classList.add('on');
                     }
-                    //console.log('섹션4 실행')
-                }
-
-                if (wS > (sec5T+sec5H-wH)) {
+                    console.log('섹션4 실행')
+                } else if(wS >= 1900) {
                     self.sec5Img.classList.add('on');
+                    console.log('섹션5 실행');
+                } else {
+                    console.log("Error!, 잘못된 형식입니다.");
                 }
             })
         },
