@@ -10,21 +10,20 @@ section {background:#fff;}
 .ta_ctr .sub_text {font-size:15px; line-height: 21px; color: #666; margin-top:10px;}
 
 /* 더미이미지 처리 */
-.header_dummy {background:url('../images/header_dummy.png') no-repeat; background-size: 360px; height: 46px;}
-.footer_dummy {background:url('../images/footer_dummy.png') no-repeat; background-size:360px; height: 84px;}
+.header_dummy img{width:100%; height:100%; object-fit: cover;}
+.footer_dummy img{width:100%; height: 100%; object-fit: cover;}
 
 
 /*mobile*/
 @media screen and (max-width:720px) {
-
 .sec1 {height: 449px; position:relative;}
 .sec1 .text_area{ padding:35px 32px; opacity: 0;}
-.sec1 .text_area.on{transition: 0.1s; opacity: 1;}
+.sec1 .text_area.on{ transition: 0.5s; opacity: 1;}
 .sec1 .img_area img {opacity: 0; }
 .sec1 .img_area img.on {opacity: 1;}
-.sec1 .img_area .img_01 { width:100%; max-width:360px; position:absolute; bottom:0; right:0; transition:0.5s;}
-.sec1 .img_area .img_02 { width:100%; max-width:114px; position: absolute; top:50%; right:144px; transform: translateY(-50%); transition:2s;}
-.sec1 .img_area .img_03 { width:100%; max-width:85px; position: absolute; top:266px; right:53px; transition:5s;}
+.sec1 .img_area .img_01 { width:100%; max-width:360px; position:absolute; bottom:0; right:0; transition:5s;}
+.sec1 .img_area .img_02 { width:100%; max-width:114px; position: absolute; top:50%; right:144px; transform: translateY(-50%); transition:3s;}
+.sec1 .img_area .img_03 { width:100%; max-width:85px; position: absolute; top:266px; right:53px; transition:7s;}
 
 .sec2 {padding:65px 20px;}
 .sec2 .img_area{margin-top:48px; height:223px;}
@@ -40,13 +39,13 @@ section {background:#fff;}
 .sec3 .img_area .img_01 { max-width:173px; position:absolute; bottom:45px;  left:50%; transform: translateX(-50%); transition:0.5s; z-index: 15;}
 .sec3 .img_area .img_02 { max-width:205px; position: absolute; bottom:45px; left:56%; transform: translateX(-50%);transition:1s; z-index: 5;}
 .sec3 .img_area .img_03 { max-width:197px; position: absolute; bottom:45px; left:57%; transform: translateX(-50%); transition:2s; z-index: 10;}
-/* left84 left96 */
+
 .sec4 {padding: 65px 30px; }
 .sec4 .img_area {height: 270px; position: relative; margin-top:20px;}
 .sec4 .img_area .img_01 { max-width:213px; position:absolute; bottom:0; left:50%; transform: translateX(-50%);transition:0.5s; z-index: 15;}
 .sec4 .img_area .img_02 { max-width:127px; position: absolute; top:0; right:calc(20% - 5px); transition:1.5s; z-index: 12; }
 .sec4 .img_area .img_02.on {top:60px;}
-.sec4 .img_area .img_03 { width:100%; max-width:218px;position: absolute; top:0; left:50%; transform: translateX(-50%); transition:0.5s;}
+.sec4 .img_area .img_03 { width:100%; max-width:218px;position: absolute; top:0; left:50%; transform: translateX(-50%); transition:2s;}
 .sec4 .img_area .img_03.on {top:12px;}
 .sec4 .img_area .img_04 { width:100%; max-width:118px; position: absolute; top:0; left:calc(20% - 5px); transition:1s; z-index: 10;}
 .sec4 .img_area .img_04.on {top:18px;}
@@ -59,7 +58,8 @@ section {background:#fff;}
 .sec5 .text_box_wrap .text_area .intro_text strong::before {content:''; width:110px; height:8px; background:#e81953; opacity: 0.2; display: inline-block; position:absolute; top:10px;}
 .sec5 .text_box_wrap .intro_section .sec_box{display: flex; justify-content: center; flex-direction: column; align-items: center; margin:30px 0 16px;}
 .sec5 .text_box_wrap .intro_section .sec_box .sec_icon{margin-bottom: 10px;}
-.sec5 .text_box_wrap .intro_section .sec_box .sec_icon img{width:24px;}
+.sec5 .text_box_wrap .intro_section .sec_box .sec_icon img{width:24px; transition: 0.8s; transform: scale(10); opacity: 0;}
+.sec5 .text_box_wrap .intro_section .sec_box .sec_icon img.on{ transform: scale(1); opacity: 1;}
 .sec5 .text_box_wrap .intro_section .sec_box .sec_title{font-size:15px; font-weight: bold;}
 .sec5 .text_box_wrap .intro_section .recommend_box ul li{background: #fff; border-radius:8px; padding:15px; font-size: 14px; text-align: center; position:relative; }
 .sec5 .text_box_wrap .intro_section .recommend_box ul li::before{content:''; width:27px; height:20px; display: inline-block; background-image:url('../images/icon_check.png'); background-size:50%; background-repeat: no-repeat; position: absolute; top:60%; left:15px; transform: translateY(-50%);} 
@@ -84,7 +84,7 @@ section {background:#fff;}
 
 .sec6 .section_main .cont_item li .img_area img{width:260px;}
 .sec6 .section_main .cont_item li .text_area {padding:20px 20px 31px;} 
-.sec6 .section_main .cont_item li .text_area strong.badge{padding:3px 8px; font-size:12px; width:100%; height: 24px; border:1px solid #000; border-radius:4px;} 
+.sec6 .section_main .cont_item li .text_area strong.badge{padding:3px 8px; font-size:12px; width:100%; border:1px solid #000; border-radius:4px;} 
 .sec6 .section_main .cont_item li .text_area h5{font-size:16px; line-height: 24px; font-weight: bold; margin-top:14px;} 
 .cont_btn{text-align: center; color:#fff; background: #222; border-radius: 8px; padding:12px 0; margin:0 16px; font-size:13px; }
 
