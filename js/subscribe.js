@@ -2,14 +2,14 @@
     const subscribe = {
         settings : function() {
             const self = this;            
-
+            self.targets = document.querySelectorAll('.active .img_area img');
+            self.options = { root: null, threshold: 0.1, rootMargin: "-0px" };
+            
             self.$containerEl = $('.container');
             self.$section1 = self.$containerEl.find('.sec1');
             self.$section2 = self.$containerEl.find('.sec2');
             self.$section3 = self.$containerEl.find('.sec3');
             self.$section4 = self.$containerEl.find('.sec4');
-            self.$allDiv = $('section div');
-            self.$allImg = $('section img');
 
             self.sec1Img = document.querySelectorAll('.sec1 .img_area img');
             self.sec2Img = document.querySelector('.sec2 .img_area img.ico_02');
@@ -24,87 +24,46 @@
             self.bindEvents();
 
 
-            setTimeout(function() {
-
-                for(let i=0; i<self.sec1Img.length; i++) {
-                    self.sec1Img[i].classList.add('on');
-                }
-                
-                // self.sec2Img.classList.add('on');
-
-                // if(self.sec2Img.classList.contains('on')){
-                //     self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png')
-                // }
-
-                // for(let i=0; i<self.sec3Img.length; i++) {
-                //     self.sec3Img[i].classList.add('on');
-                // }
-                // for(let i=0; i<self.sec4Img.length; i++) {
-                //     self.sec4Img[i].classList.add('on');
-                // }
-            }, 1000);
+            // setTimeout(function() {
+            //     self.sec2Img.classList.remove('on');
+            //     subscribe.scrollChk();
+            // }, 100);
         },
         bindEvents : function() {
             const self = this;
-            console.log('bind events');        
+            const sec2T = self.$section2.offset().top;
+            const sec2H = self.$section2.outerHeight();
+            const wH = $(window).height();
+            const wS = $(this).scrollTop();
+            console.log('bind events');
             
-            //스크롤 다운시 하단 이벤트 발생!
-            window.addEventListener('scroll',function(){
-                            
-                self.sec2Img.setAttribute('src','/images/sec2_prod_02_mo.png')
-                self.$allDiv.removeClass("on");
-                self.$allImg.removeClass("on");
+            //스크롤 이벤트 대신 하단 web API 사용하였음.(Intersection Observer API)
+            //intersection observer는 viewport와 교차하는 엘리먼트를 비동기식으로 관찰하는 기능을 제공한다.
+            //즉, 현재 화면에 표시되는 엘리먼트들에 대해서 속성 적용해줄 수 있음.
 
-
-                const sec1T = self.$section1.offset().top,
-                      sec1H = self.$section1.outerHeight(),
-                      sec2T = self.$section2.offset().top,
-                      sec2H = self.$section2.outerHeight(),
-                      sec3T = self.$section3.offset().top,
-                      sec3H = self.$section3.outerHeight(),
-                      sec4T = self.$section4.offset().top,
-                      sec4H = self.$section4.outerHeight(),
-                    //   sec5T = self.$section5.offset().top,
-                    //   sec5H = self.$section5.outerHeight(),
-                      wH = $(window).height(),
-                      wS = $(this).scrollTop();
-
-
-                if (wS > (sec1T+sec1H-wH) && wS < (sec2T+sec2H-wH)){
-
-                    for(let i=0; i<self.sec1Img.length; i++) {
-                        self.sec1Img[i].classList.add('on');
-                    }
-                    console.log('섹션1 실행')
-                } else if(wS > (sec2T+sec2H-wH) && wS < (sec3T+sec3H-wH)) {
-                    self.sec2Img.classList.add('on');
-                    if(self.sec2Img.classList.contains('on')){
-                        self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png')
-                    }
-                    console.log('섹션2 실행')
-                } else if(wS > (sec3T+sec3H-wH) && wS < (sec4T+sec4H-wH)) {
-                    for(let i=0; i<self.sec3Img.length; i++) {
-                        self.sec3Img[i].classList.add('on');
-                    }
-                    console.log('섹션3 실행')
-                } else if(wS > (sec4T+sec4H-wH) && wS < 1900) {
-                    for(let i=0; i<self.sec4Img.length; i++) {
-                        self.sec4Img[i].classList.add('on');
-                    }
-                    console.log('섹션4 실행')
+            const observer = new IntersectionObserver(function (entries, observer) {
+                entries.forEach((entry) => {
+                const container = entry.target;
+                if (entry.isIntersecting) {
+                    container.classList.add("on");
+                    subscribe.activeImgChk();
                 } else {
-                    console.log("Error!, 잘못된 형식입니다.");
+                    container.classList.remove("on");
                 }
-                
-                
-            })
-            // var dh = $(document).height();
-            // window.addEventListener('scroll', function(){
-            //     var st = $(this).scrollTop();                
-            //     var bh = $(window).height();
+                });
+            }, self.options);
 
-            //     console.log(st);
-            // })
+            self.targets.forEach((target) => {
+                observer.observe(target);
+            });
+        },
+        activeImgChk : function(){
+            const self = this;
+            if(self.sec2Img.classList.contains('on')){
+                self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png')
+            } else {
+                self.sec2Img.setAttribute('src','/images/sec2_prod_02_mo.png')
+            }
         }
     }
     subscribe.init();
