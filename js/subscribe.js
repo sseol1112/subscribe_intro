@@ -11,7 +11,8 @@
             self.$section3 = self.$containerEl.find('.sec3');
             self.$section4 = self.$containerEl.find('.sec4');
 
-            self.sec1Img = document.querySelectorAll('.sec1 .img_area img');
+            self.sec1Img02 = document.querySelector('.sec1 .img_area img:nth-child(2)');
+            self.sec1Img03 = document.querySelector('.sec1 .img_area img:nth-child(3)');
             self.sec2Img = document.querySelector('.sec2 .img_area img.ico_02');
             self.sec3Img = document.querySelectorAll('.sec3 .img_area img');
             self.sec4Img = document.querySelectorAll('.sec4 .img_area img');
@@ -23,7 +24,6 @@
             self.settings();
             self.bindEvents();
 
-
             // setTimeout(function() {
             //     self.sec2Img.classList.remove('on');
             //     subscribe.scrollChk();
@@ -31,11 +31,7 @@
         },
         bindEvents : function() {
             const self = this;
-            const sec2T = self.$section2.offset().top;
-            const sec2H = self.$section2.outerHeight();
-            const wH = $(window).height();
-            const wS = $(this).scrollTop();
-            console.log('bind events');
+            //console.log('bind events');
             
             //스크롤 이벤트 대신 하단 web API 사용하였음.(Intersection Observer API)
             //intersection observer는 viewport와 교차하는 엘리먼트를 비동기식으로 관찰하는 기능을 제공한다.
@@ -49,6 +45,7 @@
                     subscribe.activeImgChk();
                 } else {
                     container.classList.remove("on");
+                    subscribe.activeImgChk();
                 }
                 });
             }, self.options);
@@ -59,8 +56,11 @@
         },
         activeImgChk : function(){
             const self = this;
+
             if(self.sec2Img.classList.contains('on')){
-                self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png')
+                setTimeout(function() {
+                    self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png')
+                }, 500);
             } else {
                 self.sec2Img.setAttribute('src','/images/sec2_prod_02_mo.png')
             }
