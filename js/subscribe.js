@@ -59,11 +59,11 @@
                 setTimeout(function() {
                     self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png') 
                     self.sec2Img.style.scale = '2.0';
-                }, 1500);
+                }, 1200);
                 
             } else {
-                self.sec2Img.setAttribute('src','/images/sec2_prod_02_mo.png')
                 self.sec2Img.style.scale = '1.0';
+                self.sec2Img.setAttribute('src','/images/sec2_prod_02_mo.png')
             }
         }
     }
