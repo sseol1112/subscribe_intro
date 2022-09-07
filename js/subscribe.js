@@ -11,8 +11,7 @@
             self.$section3 = self.$containerEl.find('.sec3');
             self.$section4 = self.$containerEl.find('.sec4');
 
-            self.sec1Img02 = document.querySelector('.sec1 .img_area img:nth-child(2)');
-            self.sec1Img03 = document.querySelector('.sec1 .img_area img:nth-child(3)');
+            self.sec1Img = document.querySelectorAll('.sec1 .img_area img');        
             self.sec2Img = document.querySelector('.sec2 .img_area img.ico_02');
             self.sec3Img = document.querySelectorAll('.sec3 .img_area img');
             self.sec4Img = document.querySelectorAll('.sec4 .img_area img');
@@ -56,13 +55,15 @@
         },
         activeImgChk : function(){
             const self = this;
-
             if(self.sec2Img.classList.contains('on')){
                 setTimeout(function() {
-                    self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png')
-                }, 500);
+                    self.sec2Img.setAttribute('src','/images/sec2_prod_02_on.png') 
+                    self.sec2Img.style.scale = '2.0';
+                }, 1500);
+                
             } else {
                 self.sec2Img.setAttribute('src','/images/sec2_prod_02_mo.png')
+                self.sec2Img.style.scale = '1.0';
             }
         }
     }
