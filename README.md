@@ -1,6 +1,6 @@
 # subscribe_intro
 
-* interactive page.
+* interactive page 연습. -> 정기구독 소개페이지
 * Web API 'Intersection Observer API' 활용 <br/>
 : Intersection Observer는 viewport와 교차하는 엘리먼트를 비동기식으로 관찰하는 기능을 제공한다. <br/>
 : 즉, 현재 화면에 노출되는 영역에 대한 엘리먼트에 대해서 속성을 적용해 줄 수 있음 <br/>
